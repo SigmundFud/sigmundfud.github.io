@@ -7,70 +7,161 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
+    /* Reset and Base Styles */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #000000;
-      --red-bright: #ff2e00;
-      /* Changed "dim" red to a lighter, softer red */
-      --red-light: #ff7a5c; 
-      /* This is the size for "Director" and all other body text */
-      --text-large: clamp(1.5rem, 4vw, 2.5rem); 
+      --red-bright: #ff2e00; /* For your Name */
+      --red-light: #ff4d4d;  /* For Director and all body text */
+      --text-large: clamp(1.8rem, 5vw, 3rem); /* Big, readable text */
     }
 
     body {
-      background: var(--bg);
+      background-color: var(--bg) !important; /* Forces Black */
       color: var(--red-light);
       font-family: 'Share Tech Mono', monospace;
       font-size: var(--text-large);
-      line-height: 1.4;
-      padding: 40px;
+      line-height: 1.2;
+      padding: 50px 20px;
       display: flex;
       flex-direction: column;
-      gap: 80px; /* Large spacing between items */
-      max-width: 1200px;
+      gap: 100px; /* Huge vertical spacing between items */
+      max-width: 1000px;
       margin: 0 auto;
     }
 
-    /* Scanline effect */
+    /* Scanline effect for that 'code' look */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,46,0,0.03) 2px, rgba(255,46,0,0.03) 4px);
       pointer-events: none;
       z-index: 999;
     }
 
-    a { color: var(--red-light); text-decoration: none; border-bottom: 2px solid var(--red-light); }
+    a { color: var(--red-light); text-decoration: none; border-bottom: 3px solid var(--red-light); transition: 0.2s; }
     a:hover { color: var(--red-bright); border-color: var(--red-bright); }
 
     /* ── Header ── */
-    header { border-bottom: 2px solid #1a1a1a; padding-bottom: 40px; }
+    header { display: flex; flex-direction: column; gap: 10px; }
     
     .name {
-      font-size: clamp(3rem, 10vw, 8rem);
-      line-height: 0.9;
+      font-size: clamp(3.5rem, 12vw, 9rem);
       color: var(--red-bright);
       text-transform: uppercase;
-      margin-bottom: 20px;
+      letter-spacing: -2px;
     }
 
     .tagline {
       font-size: var(--text-large);
-      color: var(--red-bright);
+      color: var(--red-light);
       font-weight: bold;
+      text-transform: uppercase;
     }
 
-    /* ── Content Blocks ── */
-    .content-block { width: 100%; display: flex; flex-direction: column; gap: 20px; }
+    /* ── Content Blocks (Stacks items vertically) ── */
+    .content-block { 
+      width: 100%; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 30px; 
+    }
     
-    .label { font-size: 14px; color: #444; text-transform: uppercase; letter-spacing: 2px; }
+    .label { 
+      font-size: 16px; 
+      color: var(--red-bright); 
+      text-transform: uppercase; 
+      letter-spacing: 4px;
+      opacity: 0.7;
+    }
 
-    /* ── Video Styling ── */
+    /* ── Video ── */
     .video-wrap {
       position: relative;
       width: 100%;
       padding-top: 56.25%;
-      background: #080808;
-      border: 1px
+      background: #111;
+      border: 2px solid #222;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ── PDF Embed ── */
+    .pdf-embed {
+      width: 100%;
+      height: 85vh; /* Takes up most of the screen height */
+      border: 2px solid #222;
+      background: #111;
+    }
+
+    .pdf-link-fallback {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    /* ── Contact ── */
+    .contact-info { display: flex; flex-direction: column; gap: 30px; align-items: flex-start; }
+
+    @media (max-width: 600px) {
+      body { gap: 60px; padding: 30px 15px; }
+      .pdf-embed { height: 500px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="name">JASON MOLLINK</div>
+    <div class="tagline">DIRECTOR</div>
+  </header>
+
+  <div class="content-block">
+    <div class="label">// Content Showreel</div>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/c93jEkLdAPc" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <div class="label">// Film Showreel</div>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/OCEEMHFYaZY" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <div class="label">// Photography Portfolio</div>
+    <iframe src="photography-portfolio.pdf" class="pdf-embed"></iframe>
+    <div class="pdf-link-fallback">
+      <a href="photography-portfolio.pdf" target="_blank">View Photography PDF Fullscreen</a>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <div class="label">// Writing Portfolio</div>
+    <iframe src="writing-portfolio.pdf" class="pdf-embed"></iframe>
+    <div class="pdf-link-fallback">
+      <a href="writing-portfolio.pdf" target="_blank">View Writing PDF Fullscreen</a>
+    </div>
+  </div>
+
+  <div class="contact-info">
+    <div class="label">// Contact</div>
+    <a href="mailto:jason.mollink@gmail.com">jason.mollink@gmail.com</a>
+    <a href="https://www.linkedin.com/in/jason-mollink-a73b09319/" target="_blank">LinkedIn</a>
+  </div>
+
+  <footer style="font-size: 14px; opacity: 0.4; margin-top: 50px;">
+    © 2026 MOLLINK_DIRECTOR_OFFICIAL
+  </footer>
+
+</body>
+</html>
