@@ -3,54 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jason Mollink — Director</title>
+    <title>Jason Mollink — Writer Director Multimedia Artist</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         /* 1. THE BASICS - PURE BLACK & RED */
         body {
             background-color: #000000 !important;
-            color: #ff3300; /* High-contrast Red */
+            color: #ff3300; 
             font-family: 'Share Tech Mono', monospace;
             margin: 0;
-            padding: 40px 20px;
+            padding: 60px 20px;
             display: flex;
             flex-direction: column;
-            gap: 80px; /* Large space between everything */
-            line-height: 1.2;
+            gap: 100px; /* Big gaps between sections */
+            line-height: 1.1;
         }
 
-        /* 2. TEXT SIZES */
+        /* 2. TEXT SIZES - EVERYTHING LARGE */
         .name {
-            font-size: 60px;
+            font-size: clamp(3.5rem, 10vw, 6rem);
             color: #ff0000;
             text-transform: uppercase;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .director-title {
-            font-size: 40px;
+        .director-title, .label, a {
+            font-size: clamp(1.8rem, 5vw, 2.5rem); /* Matches Director size */
             color: #ff3300;
             text-transform: uppercase;
-            margin-bottom: 40px;
+            text-decoration: none;
         }
 
         .label {
-            font-size: 18px;
-            color: #ff3300;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
             display: block;
+            opacity: 0.6;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
         }
 
         /* 3. SHOWREELS STACKED */
         .video-container {
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
             aspect-ratio: 16 / 9;
             border: 2px solid #330000;
-            background: #080808;
         }
 
         iframe {
@@ -59,29 +56,22 @@
             border: none;
         }
 
-        /* 4. PDF EMBEDS */
-        .pdf-viewer {
-            width: 100%;
-            max-width: 900px;
-            height: 600px;
-            border: 2px solid #330000;
-            background: #111;
+        /* 4. CLICKABLE LINKS */
+        .link-item {
+            display: inline-block;
+            border-bottom: 4px solid #ff3300;
+            padding-bottom: 5px;
+            transition: 0.2s;
         }
 
-        /* 5. LINKS */
-        a {
-            color: #ff3300;
-            text-decoration: underline;
-            font-size: 24px;
-        }
-
-        a:hover {
+        .link-item:hover {
             color: #ffffff;
+            border-color: #ffffff;
         }
 
         .footer {
             font-size: 14px;
-            opacity: 0.5;
+            opacity: 0.3;
             margin-top: 50px;
         }
     </style>
@@ -108,27 +98,25 @@
     </section>
 
     <section>
-        <span class="label">// PHOTOGRAPHY PORTFOLIO</span>
-        <iframe src="photography-portfolio.pdf" class="pdf-viewer"></iframe>
-        <br><br>
-        <a href="photography-portfolio.pdf" target="_blank">Open PDF Fullscreen</a>
+        <span class="label">// PHOTOGRAPHY</span>
+        <a href="photography-portfolio.pdf" target="_blank" class="link-item">View Portfolio PDF →</a>
     </section>
 
     <section>
-        <span class="label">// WRITING PORTFOLIO</span>
-        <iframe src="writing-portfolio.pdf" class="pdf-viewer"></iframe>
-        <br><br>
-        <a href="writing-portfolio.pdf" target="_blank">Open PDF Fullscreen</a>
+        <span class="label">// WRITING</span>
+        <a href="writing-portfolio.pdf" target="_blank" class="link-item">View Writing PDF →</a>
     </section>
 
     <section>
         <span class="label">// CONTACT</span>
-        <a href="mailto:jason.mollink@gmail.com">jason.mollink@gmail.com</a><br><br>
-        <a href="https://www.linkedin.com/in/jason-mollink-a73b09319/" target="_blank">LinkedIn</a>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <a href="mailto:jason.mollink@gmail.com" class="link-item">Email Me</a>
+            <a href="https://www.linkedin.com/in/jason-mollink-a73b09319/" target="_blank" class="link-item">LinkedIn</a>
+        </div>
     </section>
 
     <div class="footer">
-        © 2026 JASON MOLLINK
+        © 2026 JASON MOLLINK // NO_SIGNAL
     </div>
 
 </body>
